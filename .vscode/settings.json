@@ -1,0 +1,11 @@
+{
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "compressed",
+      "extensionName": ".css",
+      "savePath": "/assets/css",
+      "savePathReplacementPairs": null,
+    }
+  ],
+  "liveSassCompile.settings.showOutputWindowOn": "Debug",
+}
