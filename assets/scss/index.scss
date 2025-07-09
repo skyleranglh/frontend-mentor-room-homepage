@@ -42,6 +42,7 @@
 
 html {
   font-size: 75%;
+  height: 100%;
 }
 
 body {
@@ -49,6 +50,7 @@ body {
   font-family: "League Spartan", sans-serif;
   font-size: 1rem;
   background-color: var(--color-white);
+  height: 100vh;
 }
 
 ul,
@@ -65,6 +67,10 @@ a {
 
 h1 {
   font-size: 2.5em;
+
+  @media (min-width: 46em) {
+    font-size: 3.6em;
+  }
 }
 
 h2 {
@@ -77,6 +83,10 @@ p {
   font-weight: 600;
   color: var(--color-dark-gray);
   line-height: 1.4;
+
+  @media (min-width: 46em) {
+    font-size: 1.4em;
+  }
 }
 
 button {
@@ -84,11 +94,49 @@ button {
   background-color: inherit;
 }
 
-main {
+.main {
   display: flex;
   flex-direction: column;
   gap: 1em;
   padding: 4em 2em;
+
+  @media (min-width: 46em) {
+    gap: 1.4em;
+    padding: 6.5em;
+
+    .shop-now {
+      margin-top: 0;
+    }
+  }
+}
+
+.top-row,
+.bottom-row {
+  height: 100%;
+}
+
+.top-row {
+  @media (min-width: 46em) {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    height: 60vh;
+
+    .hero-section {
+      height: auto;
+    }
+  }
+}
+
+.bottom-row {
+  @media (min-width: 46em) {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    height: 40vh;
+
+    .section {
+      height: auto;
+    }
+  }
 }
 
 .navbar {
@@ -108,6 +156,38 @@ main {
 
   .logo {
     justify-self: center;
+  }
+
+  @media (min-width: 46em) {
+    position: relative;
+    grid-template-columns: 8em 1fr;
+    padding: 0 5em;
+
+    .logo {
+      justify-self: start;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .nav-links-container {
+      position: static;
+      transform: translateY(0);
+      opacity: 1;
+      background-color: transparent;
+      width: auto;
+      height: auto;
+    }
+
+    .nav-links {
+      font-weight: 500;
+      color: var(--color-white);
+    }
+
+    .nav-link::after {
+      background-color: var(--color-white);
+    }
   }
 }
 
@@ -137,7 +217,6 @@ main {
   padding: 0 2em;
   opacity: 0;
   transform: translateY(-100%);
-  pointer-events: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
   background-color: var(--color-white);
 }
@@ -145,13 +224,11 @@ main {
 .nav-links-container.open {
   opacity: 1;
   transform: translateY(0);
-  pointer-events: auto;
 }
 
 .nav-links-container.closing {
   opacity: 0;
   transform: translateY(-100%);
-  pointer-events: none;
 }
 
 .nav-links {
@@ -201,12 +278,10 @@ main {
 
 .nav-overlay.open {
   opacity: 1;
-  pointer-events: auto;
 }
 
 .nav-overlay.closing {
   opacity: 0;
-  pointer-events: none;
 }
 
 .hero-section {
@@ -214,7 +289,12 @@ main {
   height: 30em;
   background-image: url("../images/mobile-image-hero-1.jpg");
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
+
+  @media (min-width: 46em) {
+    background-image: url("../images/desktop-image-hero-1.jpg");
+  }
 }
 
 .shop-now {
@@ -232,12 +312,13 @@ main {
 
 .section {
   width: 100%;
-  height: 22em;
+  height: 100%;
 }
 
 .first-section {
   background-image: url("../images/image-about-dark.jpg");
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 }
 
@@ -246,10 +327,16 @@ main {
   flex-direction: column;
   gap: 1em;
   padding: 4em 2em;
+
+  @media (min-width: 48em) {
+    gap: 1.4em;
+    padding: 5em 4em;
+  }
 }
 
 .third-section {
   background-image: url("../images/image-about-light.jpg");
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 }

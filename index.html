@@ -14,89 +14,79 @@
     <title>Frontend Mentor | Room homepage</title>
   </head>
   <body>
-    <header>
-      <nav class="navbar" aria-label="Primary navigation" role="navigation">
-        <button
-          class="menu-toggle open"
-          aria-label="Open menu "
-          aria-expanded="false"
-          aria-controls="nav-links"
-        >
-          <img src="assets/images/icon-hamburger.svg" alt="" />
-        </button>
+    <div class="top-row">
+      <section class="hero-section">
+        <header class="navbar-header">
+          <nav class="navbar" aria-label="Primary navigation" role="navigation">
+            <button
+              class="menu-toggle open"
+              aria-label="Open menu "
+              aria-expanded="false"
+              aria-controls="nav-links"
+            >
+              <img src="assets/images/icon-hamburger.svg" alt="" />
+            </button>
 
-        <div class="logo">
-          <a href="/" aria-label="Homepage">
-            <img src="assets/images/logo.svg" alt="Room logo" />
-            <span hidden>Logo</span>
-          </a>
-        </div>
+            <div class="logo">
+              <a href="/" aria-label="Homepage">
+                <img src="assets/images/logo.svg" alt="Room logo" />
+                <span hidden>Logo</span>
+              </a>
+            </div>
 
-        <div id="nav-links" class="nav-links-container">
-          <button class="menu-toggle close" aria-label="Close menu">
-            <img src="assets/images/icon-close.svg" alt="" />
-          </button>
+            <div id="nav-links" class="nav-links-container">
+              <button class="menu-toggle close" aria-label="Close menu">
+                <img src="assets/images/icon-close.svg" alt="" />
+              </button>
 
-          <ul class="nav-links">
-            <li><a class="nav-link" href="#">Home</a></li>
-            <li><a class="nav-link" href="#">Shop</a></li>
-            <li><a class="nav-link" href="#">About</a></li>
-            <li><a class="nav-link" href="#">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <div class="nav-overlay" role="presentation"></div>
-    </header>
+              <ul class="nav-links">
+                <li><a class="nav-link" href="#">Home</a></li>
+                <li><a class="nav-link" href="#">Shop</a></li>
+                <li><a class="nav-link" href="#">About</a></li>
+                <li><a class="nav-link" href="#">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+          <div class="nav-overlay" role="presentation"></div>
+        </header>
+      </section>
 
-    <section class="hero-section"></section>
+      <main class="main">
+        <h1>Discover innovative ways to decorate</h1>
+        <p>
+          We provide unmatched quality, comfort, and style for property owners
+          across the country. Our experts combine form and function in bringing
+          your vision to life. Create a room in your own style with our
+          collection and make your property a reflection of you and what you
+          love.
+        </p>
+        <p class="shop-now">
+          <a href="/">Shop now</a
+          ><img
+            class="arrow-icon"
+            src="assets/images/icon-arrow.svg"
+            alt="Arrow"
+          />
+        </p>
+      </main>
+    </div>
 
-    <main>
-      <h1>Discover innovative ways to decorate</h1>
-      <p>
-        We provide unmatched quality, comfort, and style for property owners
-        across the country. Our experts combine form and function in bringing
-        your vision to life. Create a room in your own style with our collection
-        and make your property a reflection of you and what you love.
-      </p>
-      <p class="shop-now">
-        <a href="/">Shop now</a
-        ><img
-          class="arrow-icon"
-          src="assets/images/icon-arrow.svg"
-          alt="Arrow"
-        />
-      </p>
-      <!-- We are available all across the globe
+    <div class="bottom-row">
+      <section class="first-section section"></section>
 
-  With stores all over the world, it's easy for you to find furniture for your home or place of business. 
-  Locally, we’re in most major cities throughout the country. Find the branch nearest you using our 
-  store locator. Any questions? Don't hesitate to contact us today.
+      <section class="second-section section">
+        <h2>About our furniture</h2>
+        <p>
+          Our multifunctional collection blends design and function to suit your
+          individual taste. Make each room unique, or pick a cohesive theme that
+          best express your interests and what inspires you. Find the furniture
+          pieces you need, from traditional to contemporary styles or anything
+          in between. Product specialists are available to help you create your
+          dream space.
+        </p>
+      </section>
 
-  Shop now
-
-  Manufactured with the best materials
-
-  Our modern furniture store provide a high level of quality. Our company has invested in advanced technology 
-  to ensure that every product is made as perfect and as consistent as possible. With three decades of 
-  experience in this industry, we understand what customers want for their home and office.
-
-  Shop now -->
-    </main>
-
-    <section class="first-section section"></section>
-
-    <section class="second-section section">
-      <h2>About our furniture</h2>
-      <p>
-        Our multifunctional collection blends design and function to suit your
-        individual taste. Make each room unique, or pick a cohesive theme that
-        best express your interests and what inspires you. Find the furniture
-        pieces you need, from traditional to contemporary styles or anything in
-        between. Product specialists are available to help you create your dream
-        space.
-      </p>
-    </section>
-
-    <section class="third-section section"></section>
+      <section class="third-section section"></section>
+    </div>
   </body>
 </html>
