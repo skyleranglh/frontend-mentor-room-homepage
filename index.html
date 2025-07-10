@@ -51,7 +51,7 @@
         </header>
       </section>
 
-      <main class="main">
+      <main class="main" aria-live="polite">
         <h1>Discover innovative ways to decorate</h1>
         <p>
           We provide unmatched quality, comfort, and style for property owners
@@ -61,13 +61,31 @@
           love.
         </p>
         <p class="shop-now">
-          <a href="/">Shop now</a
-          ><img
-            class="arrow-icon"
-            src="assets/images/icon-arrow.svg"
-            alt="Arrow"
-          />
+          <a href="/">
+            <span>Shop now</span>
+            <svg
+              class="arrow-icon"
+              width="40"
+              height="12"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M34.05 0l5.481 5.527h.008v.008L40 6l-.461.465v.063l-.062-.001L34.049 12l-.662-.668 4.765-4.805H0v-1h38.206l-4.82-4.86L34.05 0z"
+                fill="#000"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </a>
         </p>
+
+        <div class="slide-controls" aria-label="Slide controls" role="group">
+          <button class="slide-button prev">
+            <img src="assets/images/icon-angle-left.svg" alt="" />
+          </button>
+          <button class="slide-button next">
+            <img src="assets/images/icon-angle-right.svg" alt="" />
+          </button>
+        </div>
       </main>
     </div>
 
