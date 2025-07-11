@@ -15,41 +15,41 @@
   </head>
   <body>
     <div class="top-row">
-      <section class="hero-section">
-        <header class="navbar-header">
-          <nav class="navbar" aria-label="Primary navigation" role="navigation">
-            <button
-              class="menu-toggle open"
-              aria-label="Open menu "
-              aria-expanded="false"
-              aria-controls="nav-links"
-            >
-              <img src="assets/images/icon-hamburger.svg" alt="" />
+      <header class="navbar-header">
+        <nav class="navbar" aria-label="Primary navigation" role="navigation">
+          <button
+            class="menu-toggle open"
+            aria-label="Open menu "
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <img src="assets/images/icon-hamburger.svg" alt="" />
+          </button>
+
+          <div class="logo">
+            <a href="/" aria-label="Homepage">
+              <img src="assets/images/logo.svg" alt="Room logo" />
+              <span hidden>Logo</span>
+            </a>
+          </div>
+
+          <div id="nav-links" class="nav-links-container">
+            <button class="menu-toggle close" aria-label="Close menu">
+              <img src="assets/images/icon-close.svg" alt="" />
             </button>
 
-            <div class="logo">
-              <a href="/" aria-label="Homepage">
-                <img src="assets/images/logo.svg" alt="Room logo" />
-                <span hidden>Logo</span>
-              </a>
-            </div>
+            <ul class="nav-links">
+              <li><a class="nav-link" href="#">Home</a></li>
+              <li><a class="nav-link" href="#">Shop</a></li>
+              <li><a class="nav-link" href="#">About</a></li>
+              <li><a class="nav-link" href="#">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="nav-overlay" role="presentation"></div>
+      </header>
 
-            <div id="nav-links" class="nav-links-container">
-              <button class="menu-toggle close" aria-label="Close menu">
-                <img src="assets/images/icon-close.svg" alt="" />
-              </button>
-
-              <ul class="nav-links">
-                <li><a class="nav-link" href="#">Home</a></li>
-                <li><a class="nav-link" href="#">Shop</a></li>
-                <li><a class="nav-link" href="#">About</a></li>
-                <li><a class="nav-link" href="#">Contact</a></li>
-              </ul>
-            </div>
-          </nav>
-          <div class="nav-overlay" role="presentation"></div>
-        </header>
-      </section>
+      <section class="hero-section"></section>
 
       <main class="main" aria-live="polite">
         <h1 class="main-heading">Discover innovative ways to decorate</h1>
@@ -93,8 +93,8 @@
       <section class="first-section section"></section>
 
       <section class="second-section section">
-        <h2>About our furniture</h2>
-        <p>
+        <h2 class="about-heading">About our furniture</h2>
+        <p class="about-description">
           Our multifunctional collection blends design and function to suit your
           individual taste. Make each room unique, or pick a cohesive theme that
           best express your interests and what inspires you. Find the furniture
