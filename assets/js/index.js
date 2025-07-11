@@ -35,7 +35,7 @@ const nextSlideButton = document.querySelector(".slide-button.next");
 
 const fadeDuration = 300;
 
-const autoSlideDelay = 5000;
+const autoSlideDelay = 7500;
 let autoSlideInterval = null;
 
 let currentSlide = 0;
@@ -45,11 +45,11 @@ let slideDirection = "right";
 
 const startAutoSlide = () => {
   autoSlideInterval = setInterval(() => {
-    if (!isAnimating) {
-      slideDirection = "right";
-      currentSlide = (currentSlide + 1) % slides.length;
-      updateSlide(currentSlide);
-    }
+    if (isAnimating) return;
+
+    slideDirection = "right";
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlide(currentSlide);
   }, autoSlideDelay);
 };
 
