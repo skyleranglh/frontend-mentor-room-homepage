@@ -20,6 +20,8 @@ const slides = [
   },
 ];
 
+const media = window.matchMedia("(width < 56em)");
+
 const navbar = document.querySelector(".navbar");
 const openButton = document.querySelector(".menu-toggle.open");
 const closeButton = document.querySelector(".menu-toggle.close");
@@ -133,6 +135,8 @@ const closeMenu = () => {
   overlay.classList.remove("open");
   overlay.classList.add("closing");
 
+  navbar.classList.remove("active");
+
   navLinksContainer.addEventListener(
     "transitionend",
     () => {
@@ -142,6 +146,15 @@ const closeMenu = () => {
     },
     { once: true }
   );
+};
+
+const handleResize = () => {
+  openButton.setAttribute("aria-expanded", "false");
+
+  navLinksContainer.classList.remove("open", "closing");
+  overlay.classList.remove("open", "closing");
+
+  navbar.classList.remove("active");
 };
 
 openButton.addEventListener("click", openMenu);
@@ -174,14 +187,16 @@ nextSlideButton.addEventListener("click", () => {
   restartAutoSlide();
 });
 
+media.addEventListener("change", handleResize);
+
 window.addEventListener("load", () => {
   updateSlide(currentSlide);
   startAutoSlide();
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key !== "Escape" && !navbar.classList.contains("active")) return;
-
-  closeMenu();
-  openButton.focus();
+  if (event.key === "Escape" && navbar.classList.contains("active")) {
+    closeMenu();
+    openButton.focus();
+  }
 });
