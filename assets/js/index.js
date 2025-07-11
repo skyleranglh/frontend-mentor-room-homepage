@@ -34,10 +34,33 @@ const prevSlideButton = document.querySelector(".slide-button.prev");
 const nextSlideButton = document.querySelector(".slide-button.next");
 
 const fadeDuration = 300;
+
+const autoSlideDelay = 5000;
+let autoSlideInterval = null;
+
 let currentSlide = 0;
 let isAnimating = false;
 let isInitialising = true;
 let slideDirection = "right";
+
+const startAutoSlide = () => {
+  autoSlideInterval = setInterval(() => {
+    if (!isAnimating) {
+      slideDirection = "right";
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateSlide(currentSlide);
+    }
+  }, autoSlideDelay);
+};
+
+const stopAutoSlide = () => {
+  clearInterval(autoSlideInterval);
+};
+
+const restartAutoSlide = () => {
+  stopAutoSlide();
+  startAutoSlide();
+};
 
 const updateSlideContent = (slide) => {
   heroSection.style.backgroundImage =
@@ -128,22 +151,33 @@ overlay.addEventListener("click", closeMenu);
 prevSlideButton.addEventListener("click", () => {
   if (isAnimating) return;
 
+  stopAutoSlide();
+
   slideDirection = "left";
 
   currentSlide = (currentSlide - 1 + slides.length) % slides.length;
   updateSlide(currentSlide);
+
+  restartAutoSlide();
 });
 
 nextSlideButton.addEventListener("click", () => {
   if (isAnimating) return;
 
+  stopAutoSlide();
+
   slideDirection = "right";
 
   currentSlide = (currentSlide + 1) % slides.length;
   updateSlide(currentSlide);
+
+  restartAutoSlide();
 });
 
-window.addEventListener("load", () => updateSlide(currentSlide));
+window.addEventListener("load", () => {
+  updateSlide(currentSlide);
+  startAutoSlide();
+});
 
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape" && !navbar.classList.contains("active")) return;
