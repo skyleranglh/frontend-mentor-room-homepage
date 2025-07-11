@@ -20,8 +20,6 @@ const slides = [
   },
 ];
 
-let currentSlide = 0;
-
 const navbar = document.querySelector(".navbar");
 const openButton = document.querySelector(".menu-toggle.open");
 const closeButton = document.querySelector(".menu-toggle.close");
@@ -30,14 +28,16 @@ const navLinksContainer = document.querySelector(".nav-links-container");
 
 const heroSection = document.querySelector(".hero-section");
 const mainSection = document.querySelector(".main");
-const mainSectionHeading = mainSection.querySelector("h1");
-const mainSectionDescription = mainSection.querySelector("p");
+const mainSectionHeading = mainSection.querySelector(".main-heading");
+const mainSectionDescription = mainSection.querySelector(".main-description");
 const prevSlideButton = document.querySelector(".slide-button.prev");
 const nextSlideButton = document.querySelector(".slide-button.next");
 
 const fadeDuration = 300;
+let currentSlide = 0;
 let isAnimating = false;
 let isInitialising = true;
+let slideDirection = "right";
 
 const updateSlideContent = (slide) => {
   heroSection.style.backgroundImage =
@@ -50,7 +50,6 @@ const updateSlideContent = (slide) => {
 };
 
 const updateSlide = (index) => {
-  console.log(index);
   const slide = slides[index];
 
   if (isInitialising) {
@@ -59,30 +58,28 @@ const updateSlide = (index) => {
     return;
   }
 
-  if (isAnimating) return;
-
   isAnimating = true;
 
-  heroSection.classList.add("fade-out");
-  mainSectionHeading.classList.add("fade-out");
-  mainSectionDescription.classList.add("fade-out");
+  heroSection.classList.add(`slide-${slideDirection}-out`);
+  mainSectionHeading.classList.add("slide-text-out");
+  mainSectionDescription.classList.add("slide-text-out");
 
   setTimeout(() => {
     updateSlideContent(slide);
 
-    heroSection.classList.remove("fade-out");
-    heroSection.classList.add("fade-in");
+    heroSection.classList.remove(`slide-${slideDirection}-out`);
+    heroSection.classList.add(`slide-${slideDirection}-in`);
 
-    mainSectionHeading.classList.remove("fade-out");
-    mainSectionHeading.classList.add("fade-in");
+    mainSectionHeading.classList.remove("slide-text-out");
+    mainSectionHeading.classList.add("slide-text-in");
 
-    mainSectionDescription.classList.remove("fade-out");
-    mainSectionDescription.classList.add("fade-in");
+    mainSectionDescription.classList.remove("slide-text-out");
+    mainSectionDescription.classList.add("slide-text-in");
 
     setTimeout(() => {
-      heroSection.classList.remove("fade-in");
-      mainSectionHeading.classList.remove("fade-in");
-      mainSectionDescription.classList.remove("fade-in");
+      heroSection.classList.remove(`slide-${slideDirection}-in`);
+      mainSectionHeading.classList.remove("slide-text-in");
+      mainSectionDescription.classList.remove("slide-text-in");
 
       isAnimating = false;
     }, fadeDuration);
@@ -129,24 +126,28 @@ closeButton.addEventListener("click", closeMenu);
 overlay.addEventListener("click", closeMenu);
 
 prevSlideButton.addEventListener("click", () => {
-  if (!isAnimating) {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    updateSlide(currentSlide);
-  }
+  if (isAnimating) return;
+
+  slideDirection = "left";
+
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  updateSlide(currentSlide);
 });
 
 nextSlideButton.addEventListener("click", () => {
-  if (!isAnimating) {
-    currentSlide = (currentSlide + 1) % slides.length;
-    updateSlide(currentSlide);
-  }
+  if (isAnimating) return;
+
+  slideDirection = "right";
+
+  currentSlide = (currentSlide + 1) % slides.length;
+  updateSlide(currentSlide);
 });
 
 window.addEventListener("load", () => updateSlide(currentSlide));
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && navbar.classList.contains("active")) {
-    closeMenu();
-    openButton.focus();
-  }
+  if (event.key !== "Escape" && !navbar.classList.contains("active")) return;
+
+  closeMenu();
+  openButton.focus();
 });

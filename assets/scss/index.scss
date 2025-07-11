@@ -40,6 +40,10 @@
   padding: 0;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 html {
   font-size: 75%;
   height: 100%;
@@ -66,7 +70,7 @@ a {
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 3em;
 
   @media (min-width: 46em) {
     font-size: 3.6em;
@@ -76,17 +80,14 @@ h1 {
 h2 {
   font-size: 1.45em;
   text-transform: uppercase;
-  letter-spacing: 0.15ch;
+  letter-spacing: 0.5ch;
 }
 
 p {
   font-weight: 600;
   color: var(--color-dark-gray);
   line-height: 1.4;
-
-  @media (min-width: 46em) {
-    font-size: 1.4em;
-  }
+  font-size: 1.4em;
 }
 
 button {
@@ -254,16 +255,23 @@ button {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    transition: background-image 0.3s ease-in-out;
+    transition: none;
+    will-change: transform;
 
-    &.fade-out {
-      opacity: 0;
-      transition: opacity 0.3s ease-out;
+    &.slide-left-out {
+      animation: slideLeftOut 0.3s forwards;
     }
 
-    &.fade-in {
-      opacity: 1;
-      transition: opacity 0.3s ease-in;
+    &.slide-left-in {
+      animation: slideLeftIn 0.3s forwards;
+    }
+
+    &.slide-right-out {
+      animation: slideRightOut 0.3s forwards;
+    }
+
+    &.slide-right-in {
+      animation: slideRightIn 0.3s forwards;
     }
 
     @media (min-width: 46em) {
@@ -279,19 +287,19 @@ button {
     padding: 4em 2em;
     background-color: var(--color-white);
 
-    h1,
-    p {
-      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-
-      &.fade-out {
-        opacity: 0;
-        transform: translateY(10px);
+    .main-heading,
+    .main-description {
+      &.slide-text-out {
+        animation: fadeOut 0.3s forwards;
       }
 
-      &.fade-in {
-        opacity: 1;
-        transform: translateY(0);
+      &.slide-text-in {
+        animation: fadeIn 0.3s forwards;
       }
+    }
+
+    .main-description {
+      min-height: 8em;
     }
 
     .slide-controls {
@@ -322,13 +330,37 @@ button {
       }
     }
 
+    .shop-now {
+      font-size: 1.45em;
+      font-weight: bold;
+      color: var(--color-black);
+      letter-spacing: 1ch;
+      text-transform: uppercase;
+
+      a {
+        transition: color 0.3s ease-in;
+
+        .shop-now {
+          margin-left: 1em;
+        }
+
+        .arrow-icon path {
+          transition: fill 0.3s ease-in;
+        }
+      }
+
+      a:is(:hover) {
+        color: var(--color-dark-gray);
+
+        .arrow-icon path {
+          fill: var(--color-dark-gray);
+        }
+      }
+    }
+
     @media (min-width: 46em) {
       gap: 1.4em;
       padding: 6.5em;
-
-      .shop-now {
-        margin-top: 0;
-      }
     }
   }
 
@@ -387,31 +419,64 @@ button {
   }
 }
 
-.shop-now {
-  font-size: 1.45em;
-  font-weight: bold;
-  color: var(--color-black);
-  letter-spacing: 1ch;
-  text-transform: uppercase;
-  margin-top: 1em;
-
-  a {
-    transition: color 0.3s ease-in;
-
-    .shop-now {
-      margin-left: 1em;
-    }
-
-    .arrow-icon path {
-      transition: fill 0.3s ease-in;
-    }
+@keyframes slideLeftOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
   }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
 
-  a:is(:hover) {
-    color: var(--color-dark-gray);
+@keyframes slideLeftIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
 
-    .arrow-icon path {
-      fill: var(--color-dark-gray);
-    }
+@keyframes slideRightOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideRightIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
