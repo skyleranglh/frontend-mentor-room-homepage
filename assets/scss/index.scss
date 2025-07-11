@@ -55,7 +55,8 @@ body {
   font-family: "League Spartan", sans-serif;
   font-size: 1rem;
   background-color: var(--color-white);
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 }
 
 ul,
@@ -72,10 +73,6 @@ a {
 
 h1 {
   font-size: 3em;
-
-  @media (min-width: 46em) {
-    font-size: 3.6em;
-  }
 }
 
 h2 {
@@ -130,7 +127,7 @@ button {
       justify-self: center;
     }
 
-    @media (min-width: 46em) {
+    @media (min-width: 56em) {
       position: relative;
       grid-template-columns: 8em 1fr;
       padding: 0 5em;
@@ -283,7 +280,8 @@ button {
       animation: slideRightIn 0.3s forwards;
     }
 
-    @media (min-width: 46em) {
+    @media (min-width: 36em) {
+      height: 38em;
       background-image: url("../images/desktop-image-hero-1.jpg");
     }
   }
@@ -295,6 +293,16 @@ button {
     gap: 1.4em;
     padding: 4em 2em;
     background-color: var(--color-white);
+
+    .main-heading {
+      @media (min-width: 56em) {
+        font-size: 3.2em;
+      }
+
+      @media (min-width: 80em) {
+        font-size: 3.6em;
+      }
+    }
 
     .main-heading,
     .main-description {
@@ -308,9 +316,33 @@ button {
     }
 
     .main-description {
-      min-height: 10em;
+      min-height: 8em;
 
-      @media (min-width: 46em) {
+      @media (min-width: 36em) {
+        min-height: 7em;
+      }
+
+      @media (min-width: 48em) {
+        min-height: 6em;
+      }
+
+      @media (min-width: 56em) {
+        min-height: 13em;
+      }
+
+      @media (min-width: 60em) {
+        min-height: 12em;
+      }
+
+      @media (min-width: 64em) {
+        min-height: 9em;
+      }
+
+      @media (min-width: 80em) {
+        min-height: 10em;
+      }
+
+      @media (min-width: 84em) {
         min-height: 8em;
       }
     }
@@ -321,7 +353,7 @@ button {
       bottom: 100%;
       right: 0;
 
-      @media (min-width: 46em) {
+      @media (min-width: 56em) {
         bottom: 0;
         left: 0;
       }
@@ -351,7 +383,7 @@ button {
       text-transform: uppercase;
       margin-top: 0.6em;
 
-      @media (min-width: 46em) {
+      @media (min-width: 48em) {
         margin-top: 0;
       }
 
@@ -376,27 +408,34 @@ button {
       }
     }
 
-    @media (min-width: 46em) {
+    @media (min-width: 36em) {
       gap: 1.4em;
+      padding: 4em;
+    }
+
+    @media (min-width: 48em) {
       padding: 6.5em;
     }
   }
 
-  @media (min-width: 46em) {
+  @media (min-width: 56em) {
     display: grid;
-    grid-template-columns: 60% 40%;
-    height: 60vh;
+    grid-template-columns: 1fr 1fr;
 
     .hero-section {
       height: auto;
     }
+  }
+
+  @media (min-width: 80em) {
+    grid-template-columns: 60% 40%;
   }
 }
 
 .bottom-row {
   .section {
     width: 100%;
-    height: 100%;
+    height: 24em;
   }
 
   .first-section {
@@ -410,8 +449,12 @@ button {
     display: flex;
     flex-direction: column;
     gap: 1.4em;
-    padding: 4em 2em;
+    padding: 4em 2em 1em 2em;
     background-color: var(--color-white);
+
+    @media (min-width: 36em) {
+      padding: 4em ;
+    }
 
     @media (min-width: 48em) {
       padding: 5em 4em;
@@ -425,10 +468,9 @@ button {
     background-size: cover;
   }
 
-  @media (min-width: 46em) {
+  @media (min-width: 48em) {
     display: grid;
     grid-template-columns: 30% 40% 30%;
-    height: 40vh;
 
     .section {
       height: auto;
